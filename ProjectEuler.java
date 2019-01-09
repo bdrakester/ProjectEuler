@@ -77,17 +77,36 @@ public class ProjectEuler {
    */
   public static long Problem3(){
     //long solution = 1L;
+    // IDEAS - Instead of going through all numbers, maybe calucalte all primes below that value, 
+    // then see which ones are factors?
     
     long number = 600851475143L;
     System.out.print("Solving Problem 3 ");
-    /* Start from highest possible number and work backwards. */
+    /* Start from highest possible number and work backwards. 
     for(long i = number - 1; i > (number / 2); i--){
       if ((number % i) == 0){
         System.out.print(".");
         if (isPrime(number))
           return number;
       }
+    }*/
+    /* Find Factors */
+    //int n = 100;
+    number = 30;
+    long half = number / 2;
+    //long quarter = number / 4;
+
+    System.out.print("Factors of " + number + " : ");
+    for(long i = 2; i < half; i++ ){
+      
+      if (number % i == 0){
+        System.out.print(i + "-" + number / i + " ");
+      }
     }
+
+    System.out.print("\n");
+
+
     return -1L;
    }
 
