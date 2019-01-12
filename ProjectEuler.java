@@ -33,6 +33,10 @@ public class ProjectEuler {
         solutionLong = Problem3();
         System.out.println("The Solution to Problem 3 = " + solutionLong);
         break;
+      case 4:
+        solutionInt = Problem4();
+        System.out.println("The Solution to Problem 4 = " + solutionInt);
+        break;
       default:
         System.out.println("Problem not solved yet :(");
     }
@@ -94,14 +98,9 @@ public class ProjectEuler {
    * What is the largest prime factor of the number 600,851,475,143 ?
    */
   public static long Problem3(){
-    //long solution = 1L;
-    // IDEAS - Instead of going through all numbers, maybe calucalte all primes below that value,
-    // then see which ones are factors?
-
     long number = 600851475143L;
 
     /* Find the Factors */
-    //long half = number / 2;
     ArrayList<Long> factors = new ArrayList<Long>();
 
     System.out.println("Factors of " + number + " : ");
@@ -160,5 +159,53 @@ public class ProjectEuler {
 
     return true;
    }
+
+
+
+  /** 
+   * A palindromic number reads the same both ways. The largest palindrome made from the product 
+   * of two 2-digit numbers is 9009 = 91 × 99.
+   *
+   * Find the largest palindrome made from the product of two 3-digit numbers.
+   */
+  public static int Problem4() {
+    int largestPalindrome = 0;
+    int product;
+
+    for (int number1 = 100; number1 < 1000; number1++){
+      for (int number2 = 100; number2 < 1000; number2++){
+        product = number1 * number2;
+        if( isPalindrome(product) && product > largestPalindrome){
+          largestPalindrome = product;
+        }
+      }
+    }    
+    
+    return largestPalindrome;
+  }
+
+  /**
+   * Checks if a number is a palindrome, that is a number that reads the same both ways.
+   * 
+   * @param number the number to check.
+   * @return True is number is a palindrome.
+   */
+  private static boolean isPalindrome(int number){
+    String numberStr = Integer.toString(number);
+    String reversedStr = "";
+
+    int len = numberStr.length();
+    for (int i = len -1; i >= 0; i--){
+      reversedStr = reversedStr + numberStr.charAt(i);
+    }
+    
+    if (reversedStr.equals(numberStr)){
+      return true;
+    }
+    
+    return false;
+    
+  }
+
 
 }
